@@ -157,6 +157,8 @@ struct Time_Stamps
 //        uint64_t highres_imu;
 //	uint64_t attitude;
         uint64_t telemetry;
+        uint64_t system_status;
+        uint64_t motor_status;
 
 	void
 	reset_timestamps()
@@ -216,6 +218,10 @@ struct Mavlink_Messages {
 
         // Telemetry
         mavlink_telemetry_data_pack_t telemetry;
+
+        mavlink_system_status_pack_t system_status;
+
+        mavlink_motor_status_pack_t motor_status;
 
 
 	// Time Stamps
