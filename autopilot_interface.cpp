@@ -269,7 +269,7 @@ read_messages()
                                         mavlink_msg_heartbeat_decode(&message, &(current_messages.heartbeat));
                                         current_messages.time_stamps.heartbeat = get_time_usec();
                                         this_timestamps.heartbeat = current_messages.time_stamps.heartbeat;
-                                        printf("HB system status: %d", current_messages.heartbeat.system_status);
+                                        printf("HB system status: %d\n", current_messages.heartbeat.system_status);
                                         break;
                                 }
 
@@ -278,7 +278,7 @@ read_messages()
                                         mavlink_msg_telemetry_data_pack_decode(&message, &(current_messages.telemetry));
                                         current_messages.time_stamps.telemetry = get_time_usec();
                                         this_timestamps.telemetry = current_messages.time_stamps.telemetry;
-                                        printf("TELEMETRY GNSS timestamp: %lld", current_messages.telemetry.GNSS_Timestamp);
+                                        printf("TELEMETRY GNSS timestamp: %lld\n", current_messages.telemetry.GNSS_Timestamp);
                                         break;
                                 }
 
