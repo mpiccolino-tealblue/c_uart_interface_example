@@ -73,7 +73,8 @@
 #include <arpa/inet.h>
 #include <stdbool.h>
 
-#include <common/mavlink.h>
+#include "mavlink/include/AGU/AGU_MAVLINK/mavlink.h"
+//#include <common/mavlink.h>
 
 #include "generic_port.h"
 

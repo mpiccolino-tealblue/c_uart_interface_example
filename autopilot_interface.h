@@ -63,8 +63,9 @@
 #include <pthread.h> // This uses POSIX Threads
 #include <unistd.h>  // UNIX standard function definitions
 #include <mutex>
+#include "mavlink/include/AGU/AGU_MAVLINK/mavlink.h"
+//#include <common/mavlink.h>
 
-#include <common/mavlink.h>
 
 // ------------------------------------------------------------------------------
 //   Defines
@@ -146,29 +147,31 @@ struct Time_Stamps
 	}
 
 	uint64_t heartbeat;
-	uint64_t sys_status;
-	uint64_t battery_status;
-	uint64_t radio_status;
-	uint64_t local_position_ned;
-	uint64_t global_position_int;
-	uint64_t position_target_local_ned;
-	uint64_t position_target_global_int;
-	uint64_t highres_imu;
-	uint64_t attitude;
+//	uint64_t sys_status;
+//	uint64_t battery_status;
+//	uint64_t radio_status;
+//        uint64_t local_position_ned;
+//	uint64_t global_position_int;
+//	uint64_t position_target_local_ned;
+//	uint64_t position_target_global_int;
+//        uint64_t highres_imu;
+//	uint64_t attitude;
+        uint64_t telemetry;
 
 	void
 	reset_timestamps()
 	{
 		heartbeat = 0;
-		sys_status = 0;
-		battery_status = 0;
-		radio_status = 0;
-		local_position_ned = 0;
-		global_position_int = 0;
-		position_target_local_ned = 0;
-		position_target_global_int = 0;
-		highres_imu = 0;
-		attitude = 0;
+//		sys_status = 0;
+//		battery_status = 0;
+//		radio_status = 0;
+//		local_position_ned = 0;
+//		global_position_int = 0;
+//		position_target_local_ned = 0;
+//		position_target_global_int = 0;
+//		highres_imu = 0;
+//		attitude = 0;
+                telemetry = 0;
 	}
 
 };
@@ -182,7 +185,7 @@ struct Mavlink_Messages {
 	int compid;
 
 	// Heartbeat
-	mavlink_heartbeat_t heartbeat;
+        mavlink_heartbeat_t heartbeat;/*
 
 	// System Status
 	mavlink_sys_status_t sys_status;
@@ -209,9 +212,10 @@ struct Mavlink_Messages {
 	mavlink_highres_imu_t highres_imu;
 
 	// Attitude
-	mavlink_attitude_t attitude;
+        mavlink_attitude_t attitude;*/
 
-	// System Parameters?
+        // Telemetry
+        mavlink_telemetry_data_pack_t telemetry;
 
 
 	// Time Stamps

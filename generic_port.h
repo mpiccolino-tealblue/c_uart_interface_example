@@ -56,7 +56,8 @@
 //   Includes
 // ------------------------------------------------------------------------------
 
-#include <common/mavlink.h>
+#include "mavlink/include/AGU/AGU_MAVLINK/mavlink.h"
+//#include <common/mavlink.h>
 
 // ------------------------------------------------------------------------------
 //   Defines
