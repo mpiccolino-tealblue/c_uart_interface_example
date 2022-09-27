@@ -270,10 +270,10 @@ read_messages()
                 current_messages.time_stamps.heartbeat = get_time_usec();
                 this_timestamps.heartbeat = current_messages.time_stamps.heartbeat;
                 printf("HB system status: %d\n", current_messages.heartbeat.autopilot);
-                printf("HB system status: %d\n", current_messages.heartbeat.base_mode);
-                printf("HB system status: %d\n", current_messages.heartbeat.custom_mode);
-                printf("HB system status: %d\n", current_messages.heartbeat.mavlink_version);
-                printf("HB system status: %d\n", current_messages.heartbeat.type);
+                printf("HB base mode: %d\n", current_messages.heartbeat.base_mode);
+                printf("HB custom mode: %d\n", current_messages.heartbeat.custom_mode);
+                printf("HB mavlink version: %d\n", current_messages.heartbeat.mavlink_version);
+                printf("HB type: %d\n", current_messages.heartbeat.type);
                 // --------------------------------------------------------------------------
                 //   SEND HB
                 // --------------------------------------------------------------------------
