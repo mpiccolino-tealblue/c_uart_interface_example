@@ -635,7 +635,7 @@ start()
 
         printf("CHECK FOR MESSAGES\n");
 
-        while ( not current_messages.sysid )
+        while ( true )
         {
                 if ( time_to_exit )
                         return;
