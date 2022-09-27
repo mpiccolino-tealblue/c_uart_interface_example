@@ -240,7 +240,7 @@ read_messages()
         Time_Stamps this_timestamps;
 
         // Blocking wait for new data
-        while (!time_to_exit)//( !received_all and !time_to_exit )
+        while (true)//( !received_all and !time_to_exit )
         {
                 // ----------------------------------------------------------------------
                 //   READ MESSAGE
@@ -269,6 +269,7 @@ read_messages()
                                         mavlink_msg_heartbeat_decode(&message, &(current_messages.heartbeat));
                                         current_messages.time_stamps.heartbeat = get_time_usec();
                                         this_timestamps.heartbeat = current_messages.time_stamps.heartbeat;
+                                        printf("HB system status: %d", current_messages.heartbeat.system_status);
                                         break;
                                 }
 
@@ -277,6 +278,7 @@ read_messages()
                                         mavlink_msg_telemetry_data_pack_decode(&message, &(current_messages.telemetry));
                                         current_messages.time_stamps.telemetry = get_time_usec();
                                         this_timestamps.telemetry = current_messages.time_stamps.telemetry;
+                                        printf("TELEMETRY GNSS timestamp: %lld", current_messages.telemetry.GNSS_Timestamp);
                                         break;
                                 }
 
@@ -373,8 +375,8 @@ read_messages()
                 } // end: if read message
 
                 // Check for receipt of all items
-                received_all =
-                                this_timestamps.heartbeat                  //&&
+//                received_all =
+//                                this_timestamps.heartbeat                  //&&
 //				this_timestamps.battery_status             &&
 //				this_timestamps.radio_status               &&
 //				this_timestamps.local_position_ned         &&
@@ -387,9 +389,9 @@ read_messages()
                                 ;
 
                 // give the write thread time to use the port
-                if ( writing_status > false ) {
-                        usleep(100); // look for components of batches at 10kHz
-                }
+//                if ( writing_status > false ) {
+//                        usleep(100); // look for components of batches at 10kHz
+//                }
 
         } // end: while not received all
 

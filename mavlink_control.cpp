@@ -287,7 +287,7 @@ commands(Autopilot_Interface &api, bool autotakeoff)
 		printf("\n");
 
 		// disarm autopilot
-		api.arm_disarm(false);
+        api.arm_disarm(false);
 		usleep(100); // give some time to let it sink in
 	}
 
