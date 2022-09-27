@@ -279,6 +279,7 @@ read_messages()
                                         current_messages.time_stamps.telemetry = get_time_usec();
                                         this_timestamps.telemetry = current_messages.time_stamps.telemetry;
                                         printf("TELEMETRY GNSS timestamp: %lld\n", current_messages.telemetry.GNSS_Timestamp);
+                                        printf("TELEMETRY Log timestamp: %lld\n", current_messages.telemetry.Log_Timestamp);
                                         break;
                                 }
 
