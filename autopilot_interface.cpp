@@ -288,7 +288,7 @@ read_messages()
                 int encodelen = mavlink_msg_heartbeat_encode(0, 200, &msg, &heartbeat);
                 int len = write_message(msg);
                 if (len) {
-                    printf("GS HB bytes written: %d",len);
+                    printf("GS HB bytes written: %d\n",len);
                 }
                 break;
             }
