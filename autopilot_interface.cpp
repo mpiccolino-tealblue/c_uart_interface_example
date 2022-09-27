@@ -274,6 +274,22 @@ read_messages()
                 printf("HB system status: %d\n", current_messages.heartbeat.custom_mode);
                 printf("HB system status: %d\n", current_messages.heartbeat.mavlink_version);
                 printf("HB system status: %d\n", current_messages.heartbeat.type);
+                // --------------------------------------------------------------------------
+                //   SEND HB
+                // --------------------------------------------------------------------------
+                mavlink_message_t msg;
+
+                mavlink_heartbeat_t heartbeat;
+                heartbeat.autopilot=MAV_AUTOPILOT_GENERIC;
+                heartbeat.type=MAV_TYPE_HELICOPTER;
+                heartbeat.base_mode=MAV_MODE_GUIDED_ARMED;
+                heartbeat.custom_mode=0;
+                heartbeat.system_status=MAV_STATE_ACTIVE;
+                int encodelen = mavlink_msg_heartbeat_encode(0, 200, &msg, &heartbeat);
+                int len = write_message(msg);
+                if (len) {
+                    printf("GS HB bytes written: %d",len);
+                }
                 break;
             }
 
@@ -660,19 +676,19 @@ start()
     //   CHECK FOR MESSAGES
     // --------------------------------------------------------------------------
 
-    printf("CHECK FOR MESSAGES\n");
+//    printf("CHECK FOR MESSAGES\n");
 
-    while ( true )
-    {
-        if ( time_to_exit )
-            return;
-        usleep(500000); // check at 2Hz
-    }
+//    while ( true )
+//    {
+//        if ( time_to_exit )
+//            return;
+//        usleep(500000); // check at 2Hz
+//    }
 
-    printf("Found\n");
+//    printf("Found\n");
 
-    // now we know autopilot is sending messages
-    printf("\n");
+//    // now we know autopilot is sending messages
+//    printf("\n");
 
 
     // --------------------------------------------------------------------------
@@ -714,7 +730,7 @@ start()
     //	}
 
     // copy initial position ned
-    Mavlink_Messages local_data = current_messages;
+    //Mavlink_Messages local_data = current_messages;
     //-> MAPB
     //printf("HEARTBEAT SYSTEM STATUS = %d", local_data.heartbeat.system_status);
     //printf("TELEMETRY Log TIMESTAMP = %llu", local_data.telemetry.GNSS_Timestamp);
@@ -739,21 +755,21 @@ start()
     // --------------------------------------------------------------------------
     //   WRITE THREAD
     // --------------------------------------------------------------------------
-    //	printf("START WRITE THREAD \n");
+    //        printf("START WRITE THREAD \n");
 
-    //	result = pthread_create( &write_tid, NULL, &start_autopilot_interface_write_thread, this );
-    //	if ( result ) throw result;
+    //        result = pthread_create( &write_tid, NULL, &start_autopilot_interface_write_thread, this );
+    //        if ( result ) throw result;
 
-    //	// wait for it to be started
-    //	while ( not writing_status )
-    //		usleep(100000); // 10Hz
+    //        // wait for it to be started
+    //        while ( not writing_status )
+    //            usleep(100000); // 10Hz
 
-    //	// now we're streaming setpoint commands
-    //	printf("\n");
+    //        // now we're streaming setpoint commands
+    //        printf("\n");
 
 
-    // Done!
-    return;
+    //    // Done!
+    //    return;
 
 }
 
