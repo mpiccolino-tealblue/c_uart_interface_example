@@ -712,8 +712,8 @@ start()
     // copy initial position ned
     Mavlink_Messages local_data = current_messages;
     //-> MAPB
-    printf("HEARTBEAT SYSTEM STATUS = %d", local_data.heartbeat.system_status);
-    printf("TELEMETRY GNSS TIMESTAMP = %llu", local_data.telemetry.GNSS_Timestamp);
+    //printf("HEARTBEAT SYSTEM STATUS = %d", local_data.heartbeat.system_status);
+    //printf("TELEMETRY Log TIMESTAMP = %llu", local_data.telemetry.GNSS_Timestamp);
     //<- MAPB
 
     //	initial_position.x        = local_data.local_position_ned.x;
