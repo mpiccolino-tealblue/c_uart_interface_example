@@ -269,7 +269,11 @@ read_messages()
                 mavlink_msg_heartbeat_decode(&message, &(current_messages.heartbeat));
                 current_messages.time_stamps.heartbeat = get_time_usec();
                 this_timestamps.heartbeat = current_messages.time_stamps.heartbeat;
-                printf("HB system status: %d\n", current_messages.heartbeat.system_status);
+                printf("HB system status: %d\n", current_messages.heartbeat.autopilot);
+                printf("HB system status: %d\n", current_messages.heartbeat.base_mode);
+                printf("HB system status: %d\n", current_messages.heartbeat.custom_mode);
+                printf("HB system status: %d\n", current_messages.heartbeat.mavlink_version);
+                printf("HB system status: %d\n", current_messages.heartbeat.type);
                 break;
             }
 
@@ -857,7 +861,7 @@ read_thread()
     while ( ! time_to_exit )
     {
         read_messages();
-        usleep(100000); // Read batches at 10Hz
+        usleep(25000); // Read batches at 40Hz
     }
 
     reading_status = false;
